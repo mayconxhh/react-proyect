@@ -1,7 +1,7 @@
 import http from 'http'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import { StaticRouter } from 'react-router'
+import { StaticRouter } from 'react-router-dom'
 
 import Pages from './pages/containers/Page.jsx'
 

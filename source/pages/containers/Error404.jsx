@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 class Error extends Component {
 	render() {
 		return (
-			<section class="Error">
+			<div class="Error">
 				<h1>Home</h1>
-				<Link to="/">
-					Go to home
-				</Link>
-			</section>
+				<ul>
+					<li>
+						<Link to="/">
+							Go to home
+						</Link>
+					</li>
+				</ul>
+			</div>
 		)
 	}
 }
