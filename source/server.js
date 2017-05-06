@@ -1,34 +1,20 @@
 import http from 'http'
 import React from 'react'
-import { renderToString } from 'react-dom/server'
+import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 
 import Pages from './pages/containers/Page.jsx'
-
-console.log(1)
+import Layout from './pages/components/Layout.jsx'
 
 function requestHandler(req, res) {
 
-	console.log(2)
-
 	const context = {}
-
-	console.log(context)
-	console.log(Pages)
 
 	let html = renderToString(
 		<StaticRouter location={req.url} context={context}>
 			<Pages/>
 		</StaticRouter>
 	)
-
-	console.log(html)
-
-	console.log(3)
-
-	console.log(context.redirect)
-	console.log(context.missed)
-	console.log(context.url)
 
 	res.setHeader('Content-Type', 'text/html')
 
@@ -37,11 +23,11 @@ function requestHandler(req, res) {
 			Location: context.redirect.pathname,
 		})
 		res.end()
-		console.log(3.1)
+
 	}
-	console.log(4)
+
 	if(context.missed){
-		console.log(4.1)
+
 		res.writeHead(404)
 
 		html = renderToString(
@@ -51,13 +37,15 @@ function requestHandler(req, res) {
 		)
 	}
 
-	console.log(5)
-
-	res.write(`<!doctype html>
-      			<div id="app">${html}</div>`)
+	res.write(
+		renderToStaticMarkup(
+			<Layout 
+				title="Aplicación" 
+				content={html} 
+			/>
+		)
+	)
 	res.end()
-
-	console.log(6)
 }
 
 const server = http.createServer(requestHandler)

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 class Error extends Component {
 	render() {
 		return (
-			<div class="Error">
-				<h1>Home</h1>
+			<div className="Error">
+				<h1>Error</h1>
 				<ul>
 					<li>
 						<Link to="/">

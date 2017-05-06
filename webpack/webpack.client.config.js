@@ -1,10 +1,10 @@
 const path = require('path')
 
 module.exports = {
-	entry: './source/server.js',
+	entry: './source/client.js',
 	output: {
-		filename: 'server.js',
-		path: path.resolve(__dirname, '../build/server'),
+		filename: 'app.js',
+		path: path.resolve(__dirname, '../build/statics'),
 	},
 	module:{
 		rules:[
@@ -19,10 +19,11 @@ module.exports = {
 					path.resolve(__dirname, '../node_modules')
 				],
 				options: {
-					presets: ['latest-minimal', 'react']
+					presets: ['es2016', 'es2017', 'react'],
+					plugins: ['transform-es2015-modules-commonjs']
 				}
 			}
 		]
 	},
-	target: 'node'
+	target: 'web'
 }
