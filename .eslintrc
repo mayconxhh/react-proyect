@@ -1,0 +1,23 @@
+{
+  "rules": {
+    "import/no-unresolved": 1
+  },
+  "settings": {
+    "import/resolver": {
+      "eslint-import-resolver-webpack": {
+        "config": "webpack.config.js"
+      }
+    }
+  },
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "plugins": [
+    "import",
+    "jsx-a11y",
+    "react",
+  ],
+  "env": {
+    "browser":true,
+    "node":true,
+  },
+}

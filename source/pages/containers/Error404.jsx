@@ -1,21 +1,19 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+/* eslint linebreak-style: ["error", "windows"]*/
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FormattedHTMLMessage } from 'react-intl';
 
-class Error extends Component {
-	render() {
-		return (
-			<div className="Error">
-				<h1>Error</h1>
-				<ul>
-					<li>
-						<Link to="/">
-							Go to home
-						</Link>
-					</li>
-				</ul>
-			</div>
-		)
-	}
-}
+const Error = () => (
+  <div className="Error">
+    <h1>Error</h1>
+    <ul>
+      <li>
+        <Link to="/">
+          <FormattedHTMLMessage id="error.404" />
+        </Link>
+      </li>
+    </ul>
+  </div>
+);
 
-export default Error
+export default Error;

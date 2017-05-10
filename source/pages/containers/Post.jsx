@@ -1,26 +1,81 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+/* eslint linebreak-style: ["error", "windows"]*/
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import PostBody from '../../posts/containers/Post';
+import Loading from '../../shared/components/Loading';
+import Comment from '../../comments/components/Comment';
+import api from '../../api';
 
 class Post extends Component {
-	render() {
-		return (
-			<div className="Post">
-				<h1>Post</h1>
-				<ul>
-					<li>
-						<Link to="/">
-							Go to home
-						</Link>
-					</li>
-					<li>
-						<Link to="/random">
-							Go to err
-						</Link>
-					</li>
-				</ul>
-			</div>
-		)
-	}
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: true,
+      user: {},
+      post: {},
+      comments: [],
+    };
+  }
+
+  componentDidMount() {
+    this.initialFetch();
+  }
+
+  async initialFetch() {
+    const [
+      post,
+      comments,
+    ] = await Promise.all([
+      api.posts.getSingle(this.props.match.params.id),
+      api.posts.getComments(this.props.match.params.id),
+    ]);
+    const user = await api.users.getSingle(post.userId);
+    this.setState({
+      loading: false,
+      user,
+      post,
+      comments,
+    });
+  }
+
+  render() {
+    if (this.state.loading) {
+      return <Loading />;
+    }
+    return (
+      <section className="Post">
+        <PostBody
+          {...this.state.post}
+          user={this.state.user}
+          comments={this.state.comments}
+        />
+        <section>
+          {this.state.comments
+            .map(comment => (
+              <Comment key={comment.id} {...comment} />
+            ))
+          }
+        </section>
+      </section>
+    );
+  }
 }
 
-export default Post
+Post.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+};
+
+Post.defaultProps = {
+  match: {
+    params: {
+      id: null,
+    },
+  },
+};
+
+export default Post;
