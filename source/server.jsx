@@ -66,7 +66,7 @@ function requestHandler(req, res) {
 }
 const server = http.createServer(requestHandler);
 const port = process.env.PORT || 5000;
-server.listen(5000, (err) => {
+server.listen(port, (err) => {
   if (err) {
     console.log('Ocurrió un error al iniciar el servidor.');
     return;
