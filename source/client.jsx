@@ -7,6 +7,8 @@ import { addLocaleData, IntlProvider } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
 
+import './shared/components/Header.css';
+
 import messages from './messages.json';
 
 import Page from './pages/containers/Page';

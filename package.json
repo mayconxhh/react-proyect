@@ -2,13 +2,11 @@
   "name": "react-proyect",
   "version": "0.1.0",
   "description": "Proyecto en reactjs",
-  "main": "server.js",
+  "main": "./build/server/server.js",
   "scripts": {
     "build": "webpack -p",
-    "deploy": "now",
-    "deploy:sfs": "",
-    "bff": "node ./build/server/server.js",
-    "sfs": "list ./build/statics/ --port 5001 --cache 0",
+    "deploy": "git push heroku master",
+    "start": "node ./build/server/server.js",
     "watch": "webpack -w"
   },
   "keywords": [
@@ -40,6 +38,8 @@
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-latest-minimal": "^1.1.2",
     "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.1",
+    "csswring": "^6.0.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-loader": "^1.7.1",
@@ -47,6 +47,11 @@
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.10.3",
     "json-loader": "^0.5.4",
-    "list": "^0.9.5"
+    "postcss-cssnext": "^2.10.0",
+    "postcss-import": "^9.1.0",
+    "postcss-loader": "^2.0.5",
+    "postcss-mixins": "^6.0.0",
+    "postcss-nested": "^2.0.2",
+    "style-loader": "^0.17.0"
   }
 }

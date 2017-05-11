@@ -23,6 +23,14 @@ const config = {
         ],
       },
       {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+        ],
+      },
+      {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: [
@@ -36,7 +44,7 @@ const config = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.json', '.css'],
   },
   plugins: [
     new webpack.DefinePlugin({

@@ -31,6 +31,14 @@ const config = {
           path.resolve(__dirname, '../node_modules'),
         ],
       },
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     'style-loader',
+      //     'css-loader',
+      //     'postcss-loader',
+      //   ],
+      // },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
@@ -38,7 +46,6 @@ const config = {
           path.resolve(__dirname, '../node_modules'),
         ],
         options: {
-          // presets: ['latest-minimal', 'react'],
           presets: process.env.NODE_ENV === 'production' ? ['es2015', 'react'] : ['latest-minimal', 'react'],
           plugins: process.env.NODE_ENV === 'production' ? ['transform-regenerator', 'transform-runtime'] : '',
         },

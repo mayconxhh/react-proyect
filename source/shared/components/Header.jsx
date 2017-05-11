@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 const Header = () => (
-  <header>
+  <header className="Header">
     <h1>
       <FormattedMessage id="title" />
     </h1>
