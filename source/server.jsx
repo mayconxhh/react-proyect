@@ -5,10 +5,8 @@ import fs from 'fs';
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
-
 import Pages from './pages/containers/Page';
 import Layout from './pages/components/Layout';
-
 import messages from './messages.json';
 
 function requestHandler(req, res) {
@@ -66,15 +64,12 @@ function requestHandler(req, res) {
     res.end();
   }
 }
-
 const server = http.createServer(requestHandler);
 const port = process.env.PORT || 5000;
-
-server.listen(port, (err) => {
+server.listen(5000, (err) => {
   if (err) {
     console.log('Ocurrió un error al iniciar el servidor.');
     return;
   }
-
   console.log(`Corriendo servidor en el puerto: ${port}`);
 });
